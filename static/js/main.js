@@ -1,18 +1,20 @@
 
-
 import * as Vue from "https://cdn.jsdelivr.net/npm/vue@3.2/dist/vue.esm-browser.js"
 // dashboard
+
+
 
 const { createApp } = Vue
 
 export const dashboard = createApp({
     data() {
-        return {
-            message: "Django + Vue.js!",
-        }
-    },
-    delimiters: ['[[', ']]']
-});
+          return {
+              message: 'Django + Vue.js!'
+          }
+        },
+    delimiters: ['[[', ']]'],
+})
+
 dashboard.mount('#dashboard')
 
 
