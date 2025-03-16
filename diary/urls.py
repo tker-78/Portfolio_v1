@@ -11,4 +11,5 @@ urlpatterns = [
     path('events', views.EventsView.as_view(), name='events'),
     path('profile', views.ProfileView.as_view(), name='profile'),
     path('status', views.StatusView.as_view(), name='status'),
+    path('inquiry/', views.InquiryView.as_view(), name='inquiry'),
 ]

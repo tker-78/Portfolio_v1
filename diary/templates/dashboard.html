@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Dashboard</h1>
+        <p></p>
+        <p>
+            我が家の家計の状況
+        </p>
+    </div>
+
+
+    <div id="dashboard" class="container-fluid">
+    <p>[[message]]</p>
+        <div class="flex">
+            <div class="row md-10 justify-content-center">
+                <div class="col-5 border" >aaa</div>
+                <div class="col-5 border">[[ message ]]</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}

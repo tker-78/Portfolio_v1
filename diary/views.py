@@ -1,25 +1,29 @@
 from django.shortcuts import render
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 class IndexView(generic.TemplateView):
     template_name = 'index.html'
 
-class DashboardView(generic.TemplateView):
+class DashboardView(LoginRequiredMixin,generic.TemplateView):
     template_name = 'dashboard.html'
 
-class ShortcutsView(generic.TemplateView):
+class ShortcutsView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'shortcuts.html'
 
-class OverviewView(generic.TemplateView):
+class OverviewView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'overview.html'
 
-class EventsView(generic.TemplateView):
+class EventsView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'events.html'
 
-class ProfileView(generic.TemplateView):
+class ProfileView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'profile.html'
 
-class StatusView(generic.TemplateView):
+class StatusView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'status.html'
+
+class InquiryView(generic.TemplateView):
+    template_name = 'inquiry.html'

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+{% block content %}
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row col-12 col-md-5 pt-4">
+            <div class="container">
+                <h1 class="text-center mb-4">ログイン</h1>
+                <p>
+                    If you have not created an account yet, then please
+                    <a href="{{ signup_url }}">sign up</a> first.
+                </p>
+                <form method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    <div class="md-5">
+                        <label for="InputEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="InputEmail" name="login" aria-describedby="emailHelp">
+                    </div>
+                    <div class="md-5 mt-2">
+                        <label for="InputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="InputPassword" name="password">
+                    </div>
+
+
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary mt-4">Login</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock content %}
+
+
+
+

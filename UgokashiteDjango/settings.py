@@ -66,7 +66,7 @@ ROOT_URLCONF = 'UgokashiteDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR / 'diary/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -193,6 +193,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 LOGIN_REDIRECT_URL = 'diary:index'
