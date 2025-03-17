@@ -5,51 +5,44 @@ const { createApp } = Vue
 
 export const dashboard = createApp({
     mounted() {
-      const ctx = document.getElementById('lineChart').getContext('2d');
-      this.chart = new Chart(ctx, {
+      const ctx1 = document.getElementById('lineChart').getContext('2d');
+      this.chart1 = new Chart(ctx1, {
           type: 'line',
           data: {
               labels: ['2024年1月', '2024年2月', '2024年3月'],
               datasets: [
                   {
                       label: '我が家の資産の推移',
-                      data: this.values,
+                      data: this.values1,
+                  }
+              ]
+          }
+      });
+      const ctx2 = document.getElementById('pieChart').getContext('2d');
+      this.chart2 = new Chart(ctx2, {
+          type: 'pie',
+          data: {
+              labels: ['2024年1月', '2024年2月', '2024年3月'],
+              datasets: [
+                  {
+                      label: '我が家の資産の推移',
+                      data: this.values2,
                   }
               ]
           }
       })
     },
+
     methods: {
-        plus1() {
-            this.values[0] = this.values[0] + 10
-            this.chart.update()
-        },
-        plus2() {
-            this.values[1] = this.values[1] + 10
-            this.chart.update();
-        },
-        plus3() {
-            this.values[2] = this.values[2] + 10
-            this.chart.update();
-        },
-        minus1() {
-            this.values[0] = this.values[0] - 10
-            this.chart.update()
-        },
-        minus2() {
-            this.values[1] = this.values[1] - 10
-            this.chart.update()
-        },
-        minus3() {
-            this.values[2] = this.values[2] - 10
-            this.chart.update()
-        },
+        // write methods here.
     },
     data() {
         return {
             message: 'Django +++ Vue.js!',
-            values: [130, 200, 140],
-            chart: null,
+            values1: [130, 200, 140],
+            values2: [100, 200, 140],
+            chart1: null,
+            chart2: null,
         }
     },
 

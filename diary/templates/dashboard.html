@@ -9,54 +9,27 @@
     </div>
 
 
-    <div class="container-fluid overflow-auto mx-4">
-        <h1 class="mt-4">Financial Dashboard</h1>
-        <p></p>
-        <p>
-            我が家の家計の状況
-        </p>
-    </div>
-
-
-    <div id="dashboard" class="container-fluid">
+    <div id="dashboard" class="container-fluid" >
         <div class="flex">
-            <div class="row md-10 justify-content-center text-center">
-                <div class="col-4 border" >aaa</div>
+            <div class="row md-10 justify-content-center text-center pt-4">
                 <div class="col-4 border">[[ message ]]</div>
             </div>
 
-            <div>
-                <canvas id="lineChart"></canvas>
+            <div class="row justify-content-center pt-4">
+                <div class="col-5">
+                    <canvas id="pieChart"></canvas>
+                </div>
+
+                <div class="col-5">
+                    <canvas id="lineChart"></canvas>
+                </div>
             </div>
 
         </div>
-        <div>
-            <div class="d-flex justify-content-between">
-                <div>
-                    <button @click="plus1">+</button>
-                </div>
 
-                <div>
-                    <button @click="plus2">+</button>
-                </div>
-                <div>
-                    <button @click="plus3">+</button>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div>
-                    <button @click="minus1">-</button>
-                </div>
-                <div>
-                    <button @click="minus2">-</button>
-                </div>
-                <div>
-                    <button @click="minus3">-</button>
-                </div>
-            </div>
-        </div>
 
     </div>
+
 
 
 
