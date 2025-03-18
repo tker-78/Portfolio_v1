@@ -10,8 +10,8 @@ class IndexView(generic.TemplateView):
 class DashboardView(LoginRequiredMixin,generic.TemplateView):
     template_name = 'dashboard.html'
 
-class ShortcutsView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'shortcuts.html'
+class GMOView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'gmo.html'
 
 class OverviewView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'overview.html'

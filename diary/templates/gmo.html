@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <head>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <div class="container-fluid">
+        <h1 class="mt-4">GMO Coin</h1>
+        <p>GMO Coinによる取引実行ページ</p>
+        <p>API連携により実取引が生じます</p>
+    </div>
+
+    <div id="gmo">
+        <div id="candleChart"></div>
+    </div>
+
+
+    <script type="module" src="{% static 'js/gmo.js' %}"></script>
+
+{% endblock %}

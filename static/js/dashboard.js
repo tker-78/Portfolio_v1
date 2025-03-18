@@ -14,8 +14,9 @@ export const dashboard = createApp({
                   {
                       label: '我が家の資産の推移',
                       data: this.values1,
-                  }
-              ]
+                  },
+              ],
+
           }
       });
       const ctx2 = document.getElementById('pieChart').getContext('2d');
@@ -27,8 +28,17 @@ export const dashboard = createApp({
                   {
                       label: '我が家の資産の推移',
                       data: this.values2,
+                      backgroundColor: [
+                          'yellow',
+                          'pink',
+                          'skyblue',
+                          // 'rgb(255, 99, 132)',
+                          // 'rgb(54, 162, 235)',
+                          // 'rgb(255, 205, 86)'
+                      ],
                   }
-              ]
+              ],
+
           }
       })
     },
