@@ -5,6 +5,7 @@ import * as Vue from "https://cdn.jsdelivr.net/npm/vue@3.2/dist/vue.esm-browser.
 const { createApp } = Vue
 
 export const gmo = createApp({
+   // google charts
    mounted() {
        window.google.charts.load('current', { packages: ['corechart'] });
        window.google.charts.setOnLoadCallback(this.drawChart);

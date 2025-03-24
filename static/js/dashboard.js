@@ -4,6 +4,7 @@ import * as Vue from "https://cdn.jsdelivr.net/npm/vue@3.2/dist/vue.esm-browser.
 const { createApp } = Vue
 
 export const dashboard = createApp({
+    // chart.js
     mounted() {
       const ctx1 = document.getElementById('lineChart').getContext('2d');
       this.chart1 = new Chart(ctx1, {
