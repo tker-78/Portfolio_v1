@@ -11,6 +11,7 @@
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/clean-blog.css' %}" />
 
 
 
@@ -21,7 +22,7 @@
         <!-- echarts -->
         <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
 
-
+        {% block head %}{% endblock %}
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -33,7 +34,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/dashboard">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/gmo">GMO Coin</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/overview">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/events">Events</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/diary">Diary</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/profile">Profile</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/status">Status</a>
                     {% else %}

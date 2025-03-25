@@ -8,8 +8,7 @@ urlpatterns = [
     path('dashboard', views.DashboardView.as_view(), name='dashboard'),
     path('gmo', views.GMOView.as_view(), name='gmo'),
     path('overview', views.OverviewView.as_view(), name='overview'),
-    path('events', views.EventsView.as_view(), name='events'),
+    path('diary', views.DiaryView.as_view(), name='diary'),
     path('profile', views.ProfileView.as_view(), name='profile'),
     path('status', views.StatusView.as_view(), name='status'),
-    path('inquiry/', views.InquiryView.as_view(), name='inquiry'),
 ]
