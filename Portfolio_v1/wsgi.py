@@ -1,5 +1,5 @@
 """
-WSGI config for UgokashiteDjango project.
+WSGI config for Portfolio_v1 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'UgokashiteDjango.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Portfolio_v1.settings')
 
 application = get_wsgi_application()
