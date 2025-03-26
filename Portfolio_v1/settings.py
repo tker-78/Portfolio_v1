@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from django.contrib import messages
 
 
 
@@ -79,6 +80,15 @@ TEMPLATES = [
         },
     },
 ]
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-danger',
+    messages.INFO: 'alert alert-info',
+}
+
+
 
 WSGI_APPLICATION = 'Portfolio_v1.wsgi.application'
 

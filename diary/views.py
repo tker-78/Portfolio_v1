@@ -30,6 +30,10 @@ class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = 'diary_detail.html'
 
 class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
+    """
+    日記の新規作成
+    """
+
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
