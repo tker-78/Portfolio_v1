@@ -9,11 +9,14 @@
 
     <div class="container px-4 px-lg-5">
         <h1 class="mt-4">Diary</h1>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-primary" href="{% url 'diary:diary_create' %}"><i class="fa-solid fa-plus" style="font-size: 20px;"></i> New Diary</a>
+        </div>
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 {% for diary in object_list %}
                 <div class="post-preview">
-                    <a href="/post">
+                    <a href="{% url 'diary:diary_detail' diary.pk %}">
                         <h2 class="post-title">{{ diary.title }}</h2>
                         <h3 class="post-subtitle">{{ diary.subtitle}}</h3>
                     </a>

@@ -9,6 +9,9 @@ urlpatterns = [
     path('gmo', views.GMOView.as_view(), name='gmo'),
     path('overview', views.OverviewView.as_view(), name='overview'),
     path('diary', views.DiaryView.as_view(), name='diary'),
+    path('diary-detail/<int:pk>/', views.DiaryDetailView.as_view(), name='diary_detail'),
+    path('diary-create/', views.DiaryCreateView.as_view(), name='diary_create'),
+
     path('profile', views.ProfileView.as_view(), name='profile'),
     path('status', views.StatusView.as_view(), name='status'),
 ]
