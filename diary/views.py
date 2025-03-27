@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 from .models import Diary
 from .forms import DiaryCreateForm
 
@@ -49,6 +50,21 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     def form_invalid(self, form):
         messages.error(self.request, '日記を作成できませんでした。')
         return super().form_invalid(form)
+
+class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Diary
+    template_name = 'diary_delete.html'
+    success_url = reverse_lazy('diary:diary')
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super().delete(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        messages.warning(self.request, '日記を削除しました。')
+        return super().form_valid(form)
+
+
 
 
 class ProfileView(LoginRequiredMixin, generic.TemplateView):
