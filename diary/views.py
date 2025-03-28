@@ -24,7 +24,8 @@ class OverviewView(LoginRequiredMixin, generic.TemplateView):
 class DiaryView(LoginRequiredMixin, generic.ListView):
     model = Diary
     template_name = 'diary.html'
-    paginate_by = 2
+    paginate_by = 5
+    ordering = ['-created_at']
 
 class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Diary
