@@ -1,3 +1,8 @@
+import os
+import random
+
+
+
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,6 +11,7 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from .models import Diary
 from .forms import DiaryCreateForm
+
 
 # Create your views here.
 
@@ -44,6 +50,19 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         diary = form.save(commit=False)
         diary.user = self.request.user
+
+        images_dir = os.path.join('static', 'assets', 'images')
+
+        image_files = [f for f in os.listdir(images_dir)
+                       if f.lower().endswith(('.jpg', '.png'))
+                       ]
+
+        if image_files:
+            random_image_path = random.choice(image_files)
+            diary.image_path = os.path.join('assets', 'images', random_image_path)
+
+
+
         diary.save()
         messages.success(self.request, '日記を作成しました。')
         return super().form_valid(form)
