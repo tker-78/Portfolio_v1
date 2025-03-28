@@ -6,7 +6,13 @@
 {% block content %}
 
 <!-- Page header -->
-<header class="masthead" style="background-image: url('#')">
+
+<div class="container-fluid my-2">
+    <div class="d-flex">
+        <a class="btn btn-sm btn-outline-primary" href="{% url 'diary:diary' %}"><i class="fa-solid fa-arrow-left"></i>back to diary list</a>
+    </div>
+</div>
+<header class="masthead py-4" style="background-image: url('#')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
