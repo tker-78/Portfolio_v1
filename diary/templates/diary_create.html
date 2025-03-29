@@ -4,14 +4,25 @@
 
 {% block content %}
 
-<div class="container mb-4">
+<div class="container my-4">
     <div class="container gx-4 gx-lg-5 justify-content-center">
         <div class="row col-md-10 col-lg-10 col-xl-10">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <table class="table">
-                    {{ form }}
-                </table>
+                {{ form.media }}
+
+                <div class="col-md-10 mb-4">
+                    {{ form.title.label }} {{ form.title }}
+                </div>
+
+                <div class="col-md-10 mb-4">
+                    {{ form.subtitle.label }} {{ form.subtitle }}
+                </div>
+
+                <div class="col-md-10 mb-4 col-lg-12 col-xl-12">
+                    {{ form.content.label }} {{ form.content }}
+                </div>
+
                 <button class="btn btn-primary" type="submit">作成</button>
             </form>
         </div>
