@@ -10,8 +10,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.http import JsonResponse
+from markdown.extensions.fenced_code import FencedCodeExtension
 from .models import Diary
 from .forms import DiaryCreateForm
+
 
 
 # Create your views here.
@@ -43,7 +45,10 @@ class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
         markdownでレンダリングする
         """
         context = super().get_context_data(**kwargs)
-        context['rendered_as_markdown'] = markdown.markdown(self.object.content)
+        context['rendered_as_markdown'] = markdown.markdown(
+            self.object.content,
+            extensions=[FencedCodeExtension()]
+        )
         return context
 
 class DiaryCreateView(LoginRequiredMixin, generic.CreateView):

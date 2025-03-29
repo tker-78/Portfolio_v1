@@ -13,6 +13,12 @@
         <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/clean-blog.css' %}" />
 
+        <link href="{% static 'mdeditor/css/editormd.min.css' %}" rel="stylesheet">
+        <link href="{% static 'mdeditor/css/editormd.preview.css' %}" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/highlight.js/styles/default.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+        <script>hljs.highlightAll();</script>
+
 
 
         <!-- chart.js -->
@@ -109,6 +115,29 @@
 
         <!-- Core theme JS-->
         <script src="{% static 'js/sidebar.js' %}"></script>
+        <script src="{% static 'mdeditor/js/jquery.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/editormd.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/marked.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/prettify.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/raphael.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/underscore.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/sequence-diagram.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/flowchart.min.js' %}"></script>
+        <script src="{% static 'mdeditor/js/lib/jquery.flowchart.min.js' %}"></script>
+<script>
+  $(function () {
+      // content is the id of the <tag> you want to be render.
+      // Refer to the link of the template shared with this answer.
+      editormd.markdownToHTML("markdown_code_block", {
+          emoji           : true,
+          taskList        : true,
+          tex             : true,
+          flowChart       : true,
+          sequenceDiagram : true,
+      });
+  })
+
+</script>
 
 
     </body>
