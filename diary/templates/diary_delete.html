@@ -2,14 +2,17 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <form method="POST">
-            {% csrf_token %}
-            <p>本当に削除しますか？</p>
-            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-            <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:diary' %}">キャンセル</a>
-        </form>
+<div class="container-fluid pt-5">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-10 col-lg-7 col-lx-8">
+            <form method="POST">
+                {% csrf_token %}
+                <h2> Title : {{ object.title }}</h2>
+                <p>本当に削除しますか？</p>
+                <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:diary' %}">キャンセル</a>
+            </form>
+        </div>
     </div>
 </div>
 
