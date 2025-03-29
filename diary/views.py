@@ -1,4 +1,5 @@
 import os
+import markdown
 import random
 
 
@@ -36,6 +37,14 @@ class DiaryView(LoginRequiredMixin, generic.ListView):
 class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Diary
     template_name = 'diary_detail.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        markdownでレンダリングする
+        """
+        context = super().get_context_data(**kwargs)
+        context['rendered_as_markdown'] = markdown.markdown(self.object.content)
+        return context
 
 class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     """
