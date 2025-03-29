@@ -45,13 +45,16 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
-    success_url = reverse_lazy('diary:diary')
+
+    def get_success_url(self):
+        success_url = reverse_lazy('diary:diary_detail', kwargs={'pk': self.object.pk })
+        return success_url
 
     def form_valid(self, form):
         diary = form.save(commit=False)
         diary.user = self.request.user
 
-        images_dir = os.path.join('static', 'assets', 'images')
+        images_dir = os.path.join('static', 'assets', 'images', 'diary_header')
 
         image_files = [f for f in os.listdir(images_dir)
                        if f.lower().endswith(('.jpg', '.png'))
@@ -59,7 +62,7 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
 
         if image_files:
             random_image_path = random.choice(image_files)
-            diary.image_path = os.path.join('assets', 'images', random_image_path)
+            diary.image_path = os.path.join('assets', 'images', 'diary_header', random_image_path)
 
 
 
