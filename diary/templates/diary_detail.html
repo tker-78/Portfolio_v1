@@ -9,6 +9,7 @@
 <div class="container-fluid my-2">
     <div class="d-flex">
         <a class="btn btn-sm btn-outline-primary" href="{% url 'diary:diary' %}"><i class="fa-solid fa-arrow-left"></i>back to diary list</a>
+        <a class="btn btn-sm btn-outline-info ms-auto" href="{% url 'diary:diary_update' object.pk %}">Edit</a>
     </div>
 </div>
 <header class="masthead py-4" style="background-image: url({% static diary.image_path %})">
