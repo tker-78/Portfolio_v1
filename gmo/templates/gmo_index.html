@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" :class="statusClass" >
                             [[ status ]]
                         </div>
                         <div class="col-md-6">
@@ -37,5 +37,14 @@
     </div>
 
     <script type="module" src="{% static 'js/gmo_index.js' %}"></script>
+
+    <style scoped>
+        .text-red {
+            color: red;
+        }
+        .text-green {
+            color: green
+        }
+    </style>
 
 {% endblock %}

@@ -4,7 +4,6 @@ const { createApp } = Vue
 
 export const gmoIndex = createApp({
     mounted() {
-
         this.getForexStatus()
         this.getTicker()
 
@@ -12,6 +11,14 @@ export const gmoIndex = createApp({
             this.getForexStatus()
             this.getTicker()
         }, 30000)
+    },
+    computed: {
+        statusClass() {
+            return {
+                "text-red": this.status === "CLOSE",
+                "text-green": this.status === "OPEN"
+            }
+        }
     },
     methods: {
         getForexStatus() {
