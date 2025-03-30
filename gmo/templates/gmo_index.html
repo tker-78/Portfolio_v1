@@ -4,11 +4,11 @@
 
 {% block content %}
 
-    <div class="container px-4 px-lg-5">
+    <div id="gmo" class="container px-4 px-lg-5">
         <h1 class="mt-4 px-4">GMO Coin</h1>
         <div class="row">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div id="forex-status">
+                <div>
                     <div class="row">
                         <div class="col-md-4" style="font-weight: bold;">Status</div>
                         <div class="col-md-6" style="font-weight: bold;">Responsetime</div>
@@ -23,6 +23,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="d-flex flex-wrap border-bottom border-top pt-4">
+                <ul v-for="t in ticker" style="list-style: none;">
+                    <li style="color: grey;">[[ t.symbol ]]</li>
+                    <li style="color: #f05585;">[[ t.ask ]]</li>
+                    <li style="color: #3388ff">[[ t.bid ]]</li>
+                </ul>
             </div>
         </div>
     </div>
