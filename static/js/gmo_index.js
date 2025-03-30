@@ -4,14 +4,21 @@ const { createApp } = Vue
 
 export const gmoIndex = createApp({
     mounted() {
+
         this.getForexStatus()
+        this.getTicker()
+
+        setInterval(() => {
+            this.getForexStatus()
+            this.getTicker()
+        }, 30000)
     },
     methods: {
         getForexStatus() {
             fetch('/gmo/api/forex-status')
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error("Network Error: " + response.statusText);
+                        throw new Error("Network Error in fetching forex status: " + response.statusText);
                     }
                     return response.json()
                 })
@@ -20,16 +27,38 @@ export const gmoIndex = createApp({
                     this.status = data.data.status
                     this.responsetime = data.responsetime
                 })
-        }
+        },
+        getTicker() {
+            this.ticker = []
+            fetch('/gmo/api/ticker')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network Error in fetching Ticker: ' + response.statusText);
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    for (const d of data.data) {
+                        this.ticker.push({
+                            symbol: d.symbol,
+                            ask: d.ask,
+                            bid: d.bid,
+                            }
+                        )
+                    };
+
+                })
+        },
 
     },
     data() {
         return {
             status: null,
             responsetime: null,
+            ticker: [],
         }
     },
     delimiters: ['[[', ']]']
 })
 
-gmoIndex.mount("#forex-status")
+gmoIndex.mount("#gmo")

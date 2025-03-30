@@ -26,4 +26,16 @@ class ForexStatus(View):
         data['responsetime'] = strf_time
         return JsonResponse(data)
 
+class Ticker(View):
+
+    api_base_url = 'https://forex-api.coin.z.com'
+    end_point = '/public/v1/ticker'
+
+    timeout = 10
+
+    def get(self, request, *args, **kwargs):
+        response = requests.get(self.api_base_url + self.end_point, *args, **kwargs)
+        data = response.json()
+        return JsonResponse(data)
+
 
