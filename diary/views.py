@@ -29,9 +29,6 @@ class IndexView(generic.TemplateView):
 class DashboardView(LoginRequiredMixin,generic.TemplateView):
     template_name = 'dashboard.html'
 
-class GMOView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'gmo.html'
-
 class OverviewView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'overview.html'
 
