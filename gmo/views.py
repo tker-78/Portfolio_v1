@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.views import generic, View
 from django.http import JsonResponse
 
-from datetime import datetime
+from datetime import datetime, timezone
 import requests
 import json
+import pytz
 
 
 class GmoIndexView(generic.TemplateView):
@@ -21,8 +22,10 @@ class ForexStatus(View):
     def get(self, request, *args, **kwargs):
         response = requests.get(self.api_base_url + self.end_point)
         data = response.json()
-        parsed_time = datetime.strptime(data['responsetime'], '%Y-%m-%dT%H:%M:%S.%fZ')
-        strf_time = datetime.strftime(parsed_time, '%Y-%m-%d %H:%M:%S')
+        parsed_time = datetime.strptime(data['responsetime'], '%Y-%m-%dT%H:%M:%S.%fZ').replace(tzinfo=timezone.utc)
+        local_timezone = pytz.timezone('Asia/Tokyo')
+        local_time = parsed_time.astimezone(local_timezone)
+        strf_time = datetime.strftime(local_time, '%Y-%m-%d %H:%M:%S')
         data['responsetime'] = strf_time
         return JsonResponse(data)
 
