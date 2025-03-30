@@ -12,7 +12,7 @@ class GmoIndexView(generic.TemplateView):
     template_name = 'gmo_index.html'
 
 
-class ForexStatus(View):
+class ForexStatusAPI(View):
 
     api_base_url = 'https://forex-api.coin.z.com'
     end_point = '/public/v1/status'
@@ -29,7 +29,7 @@ class ForexStatus(View):
         data['responsetime'] = strf_time
         return JsonResponse(data)
 
-class Ticker(View):
+class TickerAPI(View):
 
     api_base_url = 'https://forex-api.coin.z.com'
     end_point = '/public/v1/ticker'
@@ -40,5 +40,34 @@ class Ticker(View):
         response = requests.get(self.api_base_url + self.end_point, *args, **kwargs)
         data = response.json()
         return JsonResponse(data)
+
+class KLinesAPI(View):
+
+    api_base_url = 'https://forex-api.coin.z.com'
+    end_point = '/public/v1/klines'
+
+    def get(self, request, *args, **kwargs):
+
+        # クエリパラメータを取得
+        symbol = request.GET.get('symbol', 'USD_JPY')
+        print(symbol)
+        priceType = request.GET.get('priceType', 'ASK')
+        interval = request.GET.get('interval', '1hour')
+        date_today = datetime.now().replace(tzinfo=timezone.utc).astimezone(pytz.timezone('Asia/Tokyo'))
+        date_today = datetime.strftime(date_today, "%Y-%m-%d")
+        date = request.GET.get('date', date_today)
+
+        params = {
+            'symbol': symbol,
+            'priceType': priceType,
+            'interval': interval,
+            'date': date
+        }
+
+        response = requests.get(self.api_base_url + self.end_point, params=params)
+        data = response.json()
+        return JsonResponse(data)
+
+
 
 

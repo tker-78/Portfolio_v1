@@ -6,6 +6,7 @@ export const gmoIndex = createApp({
     mounted() {
         this.getForexStatus()
         this.getTicker()
+        this.getKLine()
 
         setInterval(() => {
             this.getForexStatus()
@@ -52,10 +53,22 @@ export const gmoIndex = createApp({
                             bid: d.bid,
                             }
                         )
-                    };
-
+                    }
                 })
         },
+        getKLine() {
+            fetch(`/gmo/api/klines/?symbol=${this.symbol}&priceType=${this.priceType}&interval=${this.interval}&date=${this.date}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network Error in fetching KLine: ' + response.statusText);
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                })
+
+        }
 
     },
     data() {
@@ -63,6 +76,11 @@ export const gmoIndex = createApp({
             status: null,
             responsetime: null,
             ticker: [],
+            kline: [],
+            symbol: "USD_JPY",
+            priceType: "ASK",
+            interval: "1hour",
+            date: "20250328",
         }
     },
     delimiters: ['[[', ']]']
