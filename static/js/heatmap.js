@@ -9,7 +9,7 @@ export const heatmap = createApp({
         ctx1.height = ctx1.clientHeight * window.devicePixelRatio
         this.chart = echarts.init(ctx1)
         this.getVirtualData('2025')
-        this.chart.setOption(this.options)
+        // this.chart.setOption(this.options)
     },
     methods: {
         getVirtualData(year) {
@@ -17,18 +17,37 @@ export const heatmap = createApp({
               const end = +echarts.time.parse(+year + 1 + '-01-01');
               const dayTime = 3600 * 24 * 1000;
               const data = [];
-              for (let time = date; time < end; time += dayTime) {
-                data.push([
-                  echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),
-                  Math.floor(Math.random() * 10000)
-                ]);
-              }
+              // for (let time = date; time < end; time += dayTime) {
+              //   data.push([
+              //     echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),
+              //     Math.floor(Math.random() * 10000)
+              //   ]);
+              // }
               // this.options.series.data = data
-            this.options.series.data = [
-                ['2025-01-01', 1],
-                ['2025-01-02', 2],
-                ['2025-01-03', 3],
-            ]
+
+            fetch('api/calendar-data')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    const array_data = Object.entries(data).map(([date, value]) => {
+                        return [date, value]
+                    })
+                    this.options.series.data = array_data
+                    this.chart.setOption(this.options)
+                })
+
+
+
+
+            // this.options.series.data = [
+            //     ['2025-01-01', 1],
+            //     ['2025-01-02', 2],
+            //     ['2025-01-03', 3],
+            // ]
         }
     },
     data() {

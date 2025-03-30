@@ -138,31 +138,30 @@ class StatusView(LoginRequiredMixin, generic.TemplateView):
 class CalendarDataAPIView(View):
     def get(self, request, *args, **kwargs):
         entries = Diary.objects.filter(user=request.user).values('created_at').order_by('created_at')
-        heatmap_data = []
+        heatmap_data = {}
 
         for entry in entries:
             utc_time = entry['created_at']
             local_timezone = pytz.timezone('Asia/Tokyo')
             local_time = utc_time.astimezone(local_timezone)
+            local_time_str = datetime.datetime.strftime(local_time, '%Y-%m-%d')
 
             # timestampに変換
-            timestamp = int(datetime.datetime.combine(local_time, datetime.datetime.min.time()).timestamp())
+            # timestamp = int(datetime.datetime.combine(local_time, datetime.datetime.min.time()).timestamp())
 
-            data = {
-                't': timestamp,
-                'p': 1,
-                'v': 'Asia'
-            }
-            heatmap_data.append(data)
+            # data = {
+            #     't': timestamp,
+            #     'p': 1,
+            #     'v': 'Asia'
+            # }
+            # heatmap_data.append(data)
 
 
 
-            # if timestamp in heatmap_data:
-            #     heatmap_data[timestamp] += 1
-            # else:
-            #     heatmap_data[timestamp] = 1
-
-        # heatmap_json = json.dumps(heatmap_data)
+            if local_time_str in heatmap_data:
+                heatmap_data[local_time_str] += 1
+            else:
+                heatmap_data[local_time_str] = 1
 
         return JsonResponse(
                 heatmap_data,
