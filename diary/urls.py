@@ -16,4 +16,5 @@ urlpatterns = [
 
     path('profile', views.ProfileView.as_view(), name='profile'),
     path('status', views.StatusView.as_view(), name='status'),
+    path('api/calendar-data', views.CalendarDataAPIView.as_view(), name='calendar-data-api'),
 ]
