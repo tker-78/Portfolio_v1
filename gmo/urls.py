@@ -9,5 +9,6 @@ urlpatterns = [
     path('api/forex-status', views.ForexStatusAPI.as_view(), name="forex_status"),
     path('api/ticker', views.TickerAPI.as_view(), name="ticker"),
     path('api/klines/', views.KLinesAPI.as_view(), name="klines"),
+    path('api/klines/', views.KLinesAPI.as_view(), name="klines"),
 
 ]

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import generic, View
 from django.http import JsonResponse
 
+from .models import KLine
+
 from datetime import datetime, timezone
 import requests
 import json
@@ -65,8 +67,40 @@ class KLinesAPI(View):
         }
 
         response = requests.get(self.api_base_url + self.end_point, params=params)
+
         data = response.json()
+        klines = data['data']
+
+        for kline in klines:
+            self.generate_kline(kline)
+
+
+
         return JsonResponse(data)
+
+
+    def generate_kline(self, kline_data: dict):
+
+        # format of kline_data: {'openTime': '1743109200000', 'open': '151.096', 'high': '151.109', 'low': '151.067', 'close': '151.095'}
+        timestamp = kline_data['openTime']
+        time = datetime.fromtimestamp(int(timestamp) / 1000)
+
+
+        kline = KLine(
+            time=time,
+            open=float(kline_data['open']),
+            high=float(kline_data['high']),
+            low=float(kline_data['low']),
+            close=float(kline_data['close']),
+        )
+
+        kline.save()
+
+        return
+
+
+
+
 
 
 

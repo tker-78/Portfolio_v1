@@ -11,7 +11,7 @@ export const gmoIndex = createApp({
         setInterval(() => {
             this.getForexStatus()
             this.getTicker()
-        }, 30000)
+        }, 100000)
     },
     computed: {
         statusClass() {
