@@ -36,6 +36,11 @@ ALLOWED_HOSTS = [
     'portfoliov1-production.up.railway.app'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'portfoliov1-production.up.railway.app',
+    '*.up.railway.app'
+]
+
 
 # Application definition
 
