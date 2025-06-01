@@ -33,12 +33,16 @@ SECRET_KEY = 'django-insecure-wu8nacbievatxug)$_re0ko2sq#n(n5k4ps&emp#)2l$18kltg
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'portfoliov1-production.up.railway.app'
+    'portfoliov1-production.up.railway.app',
+    'www.algonotein.com',
+    'algonotein.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://portfoliov1-production.up.railway.app',
-    'https://*.up.railway.app'
+    'https://*.up.railway.app',
+    'https://algonotein.com',
+    'https://*.algonotein.com'
 ]
 
 
